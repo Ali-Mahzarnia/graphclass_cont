@@ -13,7 +13,7 @@ Example code:
 In this example we use the "::" operator instead of "library(graphclass)". This operator is more memory effieicent and provides flexibility when using similar packages. Once the package is successfully installed, you can use the following example code to run the subgraph selection penalty using the system to choose the lambda through 3-fold cv:
 
 ```R 
-set.seed(123)
+set.seed(234)
 
 
 n = 500 # sample size
@@ -26,8 +26,11 @@ true_beta = c( rep(10,1), rep(0,2), rep( 30,3 ) ,rep(0,4))
 
 
 graphclass::plot_adjmatrix(true_beta) # plot of beta
+```
+![plot](https://github.com/Ali-Mahzarnia/graphclass_cont/blob/main/images/Screenshot%202023-05-17%20at%203.40.02%20PM.png)
 
 
+```R
 beta_matrix =graphclass:: get_matrix(true_beta)
 
 
@@ -48,19 +51,63 @@ gc = graphclass::graphclass(X = x, Y = y, type = "intersection",
                 rho = 1, gamma = 1e-5, folds = 10, lambda_selection = T)
 
 gc$train_error # training RMSE 
+```
+
+```{r basicconsole}
+[1] 1.012476
+
+```  
+```R
 sqrt(mean((gc$Yfit-y)^2)) # computing RMSE manually
+```
+```{r basicconsole}
+[1] 1.012476
+
+```  
+```R
 sd(y) # compare it to standard deviation of y
+```
+```{r basicconsole}
+[1] 55.78098
 
+```  
+
+```R
 gc$active_nodes
+```
+```{r basicconsole}
+[1] 4
 
+``` 
+
+``` R
 plot(gc) # plot
+``` 
+![plot](https://github.com/Ali-Mahzarnia/graphclass_cont/blob/main/images/Screenshot%202023-05-17%20at%203.41.09%20PM.png)
 
+```R
 gc$nonzeros_percentage # computing percentage of non sparse beta
-mean(gc$beta!=0) # computing percentage of non sparse beta manually 
+```
+```{r basicconsole}
+[1] 0.4
 
+``` 
+
+```R
+mean(gc$beta!=0) # computing percentage of non sparse beta manually 
+```
+```{r basicconsole}
+[1] 0.4
+
+``` 
+```R
 gc$lambda # the chosen lambda
 
 ```
+```{r basicconsole}
+[1] 0.03606078
+
+``` 
 
 You can use the following example code to run the subgraph selection penalty using your pre-fixed lambda through 5-fold cv:
 
