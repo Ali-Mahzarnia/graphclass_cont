@@ -6,7 +6,7 @@ To install this package, please run the following line in R and make sure that t
 
 ```R  
 library(devtools)
-install_github("Ali-Mahzarnia/graphclasscont")
+install_github("Ali-Mahzarnia/graphclass_cont")
 ```
 
 Example code:
