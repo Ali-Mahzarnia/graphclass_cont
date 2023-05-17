@@ -10,7 +10,7 @@ install_github("Ali-Mahzarnia/graphclass_cont")
 ```
 
 Example code:
-In this example we use the "::" operator instead of "library(graphclasscont)". This operator is more memory effieicent and provides flexibility when using similar packages. Once the package is successfully installed, you can use the following example code to run the subgraph selection penalty using the system to choose the lambda through 3-fold cv:
+In this example we use the "::" operator instead of "library(graphclass)". This operator is more memory effieicent and provides flexibility when using similar packages. Once the package is successfully installed, you can use the following example code to run the subgraph selection penalty using the system to choose the lambda through 3-fold cv:
 
 ```R 
 set.seed(123)
@@ -25,10 +25,10 @@ x = matrix( NA, n, ppminus1by2   ) # vectorized data
 true_beta = c( rep(10,1), rep(0,2), rep( 30,3 ) ,rep(0,4))
 
 
-graphclasscont::plot_adjmatrix(true_beta) # plot of beta
+graphclass::plot_adjmatrix(true_beta) # plot of beta
 
 
-beta_matrix =graphclasscont:: get_matrix(true_beta)
+beta_matrix =graphclass:: get_matrix(true_beta)
 
 
 
@@ -44,7 +44,7 @@ y = y [2: length(y)]  # remove the first NA
 
 
 
-gc = graphclasscont::graphclass(X = x, Y = y, type = "intersection", 
+gc = graphclass::graphclass(X = x, Y = y, type = "intersection", 
                 rho = 1, gamma = 1e-5, folds = 10, lambda_selection = T)
 
 gc$train_error # training RMSE 
@@ -65,7 +65,7 @@ gc$lambda # the chosen lambda
 You can use the following example code to run the subgraph selection penalty using your pre-fixed lambda through 5-fold cv:
 
 ```R 
-gc.fit <- graphclasscont::graphclass(X = x, Y = y, type = "intersection", lambda=gc$lambda ,rho = 1, gamma = 1e-5, folds = 5, lambda_selection = FALSE)
+gc.fit <- graphclass::graphclass(X = x, Y = y, type = "intersection", lambda=gc$lambda ,rho = 1, gamma = 1e-5, folds = 5, lambda_selection = FALSE)
 gc.fit$train_error
 gc.fit$lambda
 sd(y)
