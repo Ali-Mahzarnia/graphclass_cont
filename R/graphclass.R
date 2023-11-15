@@ -209,7 +209,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
     # Test fitting
     if(!is.null(Xtest)) {
       predict.graphclass(gl_results, Xtest)
-      Yfit_test <- Xtest%*%gl_results$beta + gl_results$b
+      Yfit_test <- alpha_normalization * Xtest%*%gl_results$beta + gl_results$b
       Ypred <-Yfit_test# 1*(Yfit_test>0) -1*(Yfit_test<=0)
       gl_results$Ypred <- Yfit_test #predict.graphclass(gl_results, Xtest)
       gl_results$Yfit_test <-Yfit_test #predict.graphclass(gl_results, Xtest, type = "prob")
