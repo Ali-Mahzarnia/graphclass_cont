@@ -259,7 +259,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
     # Train fitting
     Yfit <- alpha_normalization*(X%*%gl_results$beta) + gl_results$b
     gl_results$Yfit <- exp(Yfit)/(1+exp(Yfit))
-    gl_results$train_error <- 1- sum(diag(table(sign(Yfit),sign(Y))))/length(Y)
+    #gl_results$train_error <- 1- sum(diag(table(sign(Yfit),sign(Y))))/length(Y)
     class(gl_results) <- "graphclass"
     # Test fitting
     if(!is.null(Xtest)) {
@@ -269,7 +269,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
       gl_results$Ypred <- predict.graphclass(gl_results, Xtest)
       gl_results$Yfit_test <- predict.graphclass(gl_results, Xtest, type = "prob")
       if(!is.null(Ytest)) {
-        gl_results$test_error = predict.graphclass(gl_results, Xtest, type = "error", Ytest = Ytest)
+        #gl_results$test_error = predict.graphclass(gl_results, Xtest, type = "error", Ytest = Ytest)
       } 
     }
     gl_results$type = "intersection"
@@ -312,7 +312,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
     # Train fitting
     Yfit <- alpha_normalization*(X%*%(crossprod(D,gl_results$beta ))) + gl$b
     gl_results$Yfit <- exp(Yfit)/(1+exp(Yfit))
-    gl_results$train_error <- 1-sum(diag(table(as.vector(sign(gl_results$Yfit-0.5)),sign(Y))))/length(Y)
+    #gl_results$train_error <- 1-sum(diag(table(as.vector(sign(gl_results$Yfit-0.5)),sign(Y))))/length(Y)
     # Test fitting
     if(!is.null(Xtest)) {
       Yfit_test <- Xtest%*%crossprod(D,gl_results$beta) + gl_results$b
@@ -323,7 +323,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
       }
       if(!is.null(Ytest)) {
         levels(Ytest) <- c(-1, 1)
-        gl_results$test_error = 1-sum(diag(table(sign(Yfit_test),sign(Ytest))))/length(Ytest)
+        #gl_results$test_error = 1-sum(diag(table(sign(Yfit_test),sign(Ytest))))/length(Ytest)
       }
     }
     gl_results$active_nodes = active_nodes_union(gl_results$beta, NODES = NODES)
@@ -362,13 +362,13 @@ graphclass.default <- function(X = NULL, Y = NULL,
     # Train fitting
     Yfit <- alpha_normalization*(X%*%gl$best_beta) + gl$b
     gl_results$Yfit <- exp(Yfit)/(1+exp(Yfit))
-    gl_results$train_error <- 1- sum(diag(table(sign(Yfit),sign(Y))))/length(Y)
+    #gl_results$train_error <- 1- sum(diag(table(sign(Yfit),sign(Y))))/length(Y)
     # Test fitting
     if(!is.null(Xtest)) {
       levels(Ytest) <- c(-1, 1)
       Yfit_test <- Xtest%*%gl_results$beta + gl_results$b
       gl_results$Yfit_test <- exp(Yfit_test)/(1+exp(Yfit_test))
-      gl_results$test_error = 1-sum(diag(table(sign(Yfit_test),sign(Ytest))))/length(Ytest)
+      #gl_results$test_error = 1-sum(diag(table(sign(Yfit_test),sign(Ytest))))/length(Ytest)
     }
     gl_results$type = "intersection"
     class(gl_results) <- "graphclass"
