@@ -138,8 +138,8 @@ graphclass.default <- function(X = NULL, Y = NULL,
   alpha_normalization <- max(apply(X, 2, function(v) sd(v)))
                                    print(alpha_normalization)
   X <- X/alpha_normalization
-  lambda1 <- lambda*rho/alpha_normalization
-  lambda2 <- lambda/alpha_normalization
+  lambda1 <- lambda
+  lambda2 <- lambda
   gamma <- gamma/alpha_normalization
   # Create D
   if(is.null(D)) {
