@@ -136,7 +136,7 @@ graphclass.default <- function(X = NULL, Y = NULL,
   #table(Y, Yoriginal)
   # Normalize X for numerical stability
   alpha_normalization <- max(apply(X, 2, function(v) sd(v)))
-                                   print(alpha_normalization)
+                                   #print(alpha_normalization)
   X <- X/alpha_normalization
   lambda1 <- lambda
   lambda2 <- lambda
