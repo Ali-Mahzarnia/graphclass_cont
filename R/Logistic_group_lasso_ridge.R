@@ -26,6 +26,7 @@ if  (lambda_selection==TRUE) {
                     intercept = T, nfolds=folds , lambda=lambda2 )}
   
  if  (lambda_selection==FALSE) { 
+   print("NEW")
    gr_cv  =  gglasso(x=X, y=Y, group=index, 
                     loss='ls', 
                     intercept = T, lambda=lambda2)   }
