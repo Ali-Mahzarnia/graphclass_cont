@@ -26,9 +26,9 @@ if  (lambda_selection==TRUE) {
                     intercept = T, nfolds=folds , lambda=lambda2 )}
   
  if  (lambda_selection==FALSE) { 
-   gr_cv  =  gglasso(x=X, y=Y, group=index, 
-                    loss='ls', 
-                    intercept = T, lambda=lambda2)   }
+   gr_cv  =   cv.gglasso(x=X, y=Y, group=index, 
+                    loss='ls', pred.loss='L2', nlambda = 1,
+                    intercept = T, nfolds=folds , lambda=lambda2 )  }
   
 optimal = list()
 coefs = coef(gr_cv$gglasso.fit, s = gr_cv$lambda.min)
