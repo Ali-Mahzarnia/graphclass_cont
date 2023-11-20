@@ -33,6 +33,8 @@ if  (lambda_selection==TRUE) {
    gr_cv  =   gglasso(x=X, y=Y, group=index, 
                     loss='ls', nlambda = 1,
                     intercept = T , lambda=lambda2 ) 
+print(length(gr_cv$beta))
+   
 
  }
   
