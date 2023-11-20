@@ -21,9 +21,9 @@ for (i in 1:pminus) {
 index= index[2:length(index)]
 
 if  (lambda_selection==TRUE) {   
- gr_cv =  cv.gglasso(x=X, y=Y, group=index, 
+ gr_cv =  gglasso(x=X, y=Y, group=index, 
                     loss='ls', pred.loss='L2', 
-                    intercept = T, nfolds=folds)}
+                    intercept = T)}
   
  if  (lambda_selection==FALSE) { 
    gr_cv =  cv.gglasso(x=X, y=Y, group=index, 
