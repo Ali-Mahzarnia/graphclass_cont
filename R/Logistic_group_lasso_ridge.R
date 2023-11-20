@@ -28,7 +28,7 @@ if  (lambda_selection==TRUE) {
  if  (lambda_selection==FALSE) { 
    gr_cv =  gr_cv =  gglasso(x=X, y=Y, group=index, 
                     loss='ls', 
-                    intercept = T)   }
+                    intercept = T, lambda=lambda2)   }
   
 optimal = list()
 coefs = coef(gr_cv$gglasso.fit, s = gr_cv$lambda.min)
