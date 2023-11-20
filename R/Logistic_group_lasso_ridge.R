@@ -27,7 +27,7 @@ if  (lambda_selection==TRUE) {
   
  if  (lambda_selection==FALSE) { 
    gr_cv =  gr_cv =  gglasso(x=X, y=Y, group=index, 
-                    loss='ls', pred.loss='L2', 
+                    loss='ls', 
                     intercept = T)   }
   
 optimal = list()
