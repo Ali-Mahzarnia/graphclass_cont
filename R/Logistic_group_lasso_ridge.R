@@ -22,7 +22,7 @@ index= index[2:length(index)]
 
 if  (lambda_selection==TRUE) {   
  gr_cv =  cv.gglasso(x=X, y=Y, group=index, 
-                    loss='ls', pred.loss='L2', 
+                    loss='ls', pred.loss='L2', nlambda = 1,
                     intercept = T, nfolds=folds , lambda=lambda2 )}
   
  if  (lambda_selection==FALSE) { 
